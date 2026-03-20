@@ -104,6 +104,8 @@ const STATIC_ENTRIES = [
     info: 'tts.studyai.click · Thay thế',
     needs_license: false,
     step: 2,
+    guide_video_url: 'https://www.youtube.com/watch?v=17a4u076iOc&list=PLg4WykTKAcjtE3KELuw81TzMyiQwkwauv&index=5',
+    info_btn: 'ⓘ  Hướng dẫn lấy API',
   },
   {
     name: 'Tạo Ảnh Whisk',
@@ -306,7 +308,7 @@ function makeCard(e, idx) {
     actionClass = 'open'; actionText = e.action_btn || '↗  Truy cập Tool';
   }
 
-  const infoBtnText = 'ⓘ  Hướng dẫn';
+  const infoBtnText = e.info_btn || 'ⓘ  Hướng dẫn';
   const infoBtnClick = `onInfo(${idx})`;
 
   card.innerHTML = `
@@ -333,7 +335,7 @@ function makeCard(e, idx) {
       ${e.extra_guide_tab !== undefined ? `<button class="btn-flat" onclick="switchTab(${e.extra_guide_tab});showGuide()">ⓘ HD Flow</button>` : ''}
       <button class="btn-action ${actionClass}" id="btn-action-${idx}" onclick="onAction(${idx})">${actionText}</button>
     </div>
-    ${e.gift_note ? `<div class="card-notice" style="text-align:center">${e.gift_note} <a href="#" class="notice-link" onclick="openUrl('${e.gift_url}');return false;">Tải về</a> và đọc hướng dẫn tại <a href="#" class="notice-link" onclick="openUrl('https://www.ai86.pro/guide.html#elevenlabs');return false;">đây</a>, chúng tôi không giải thích gì thêm.</div>` : ''}
+    ${e.gift_note ? `<div class="card-notice" style="text-align:center">${e.gift_note} <a href="#" class="notice-link" onclick="openUrl('${e.gift_url}');return false;">Tải về</a> và xem hướng dẫn tại <a href="#" class="notice-link" onclick="openUrl('https://www.youtube.com/watch?v=O5WF_tLKtyg&list=PLg4WykTKAcjtE3KELuw81TzMyiQwkwauv&index=6&t=1s');return false;">đây</a>, chúng tôi không giải thích gì thêm.</div>` : ''}
     <div class="card-status" id="status-${idx}"></div>
   `;
   return card;
