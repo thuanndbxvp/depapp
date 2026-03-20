@@ -21,7 +21,6 @@
     </div>
     <div class="header-right">
       <button class="btn-guide" onclick="showGuide()">📖 Hướng dẫn</button>
-      <button class="btn-playlist" onclick="showPlaylist()">🎁 Trọn bộ Video hướng dẫn và quà tặng</button>
       <div class="theme-switcher" id="themeSwitcher">
         <label class="theme-label" for="themeSelect">Theme</label>
         <select id="themeSelect" class="theme-select" aria-label="Chọn tông màu giao diện">
@@ -30,6 +29,7 @@
           <option value="sunset" selected>Hoàng hôn</option>
         </select>
       </div>
+      <button class="btn-playlist" onclick="openUrl('https://youtube.com/playlist?list=PLg4WykTKAcjtE3KELuw81TzMyiQwkwauv&si=RWozuQG46klPKm6v')">🎁 Trọn bộ Video hướng dẫn và quà tặng</button>
     </div>
   </div>
 
@@ -246,24 +246,6 @@
         <img src="images/3.png" class="guide-img" alt="Lồng Tiếng 11Labs">
       </div>
 
-    </div>
-  </div>
-</div>
-
-<!-- PLAYLIST POPUP -->
-<div class="modal-overlay" id="playlistOverlay" onclick="closePlaylist()">
-  <div class="modal modal-wide" onclick="event.stopPropagation()">
-    <div class="modal-header">
-      <span>🎁 Trọn bộ Video hướng dẫn và quà tặng</span>
-      <button class="modal-close" onclick="closePlaylist()">✕</button>
-    </div>
-    <div class="modal-body">
-      <div class="guide-video-wrap">
-        <iframe src="https://www.youtube-nocookie.com/embed/videoseries?list=PLg4WykTKAcjtE3KELuw81TzMyiQwkwauv" class="guide-video" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-      </div>
-      <div class="guide-section guide-tip">
-        <div class="guide-text">Nếu bị chặn nhúng, bấm <a href="#" class="notice-link" onclick="openUrl('https://youtube.com/playlist?list=PLg4WykTKAcjtE3KELuw81TzMyiQwkwauv&si=RWozuQG46klPKm6v');return false;">mở playlist trên YouTube</a>.</div>
-      </div>
     </div>
   </div>
 </div>

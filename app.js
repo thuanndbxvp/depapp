@@ -520,13 +520,6 @@ function closeGuide() {
   document.getElementById('guideOverlay').classList.remove('open');
 }
 
-function showPlaylist() {
-  document.getElementById('playlistOverlay').classList.add('open');
-}
-function closePlaylist() {
-  document.getElementById('playlistOverlay').classList.remove('open');
-}
-
 function switchTab(idx) {
   document.querySelectorAll('.guide-tab').forEach((t, i) => t.classList.toggle('active', i === idx));
   document.querySelectorAll('.guide-panel').forEach((p, i) => p.classList.toggle('active', i === idx));
@@ -535,7 +528,6 @@ function switchTab(idx) {
 document.addEventListener('keydown', e => {
   if (e.key === 'Escape') {
     closeGuide();
-    closePlaylist();
   }
 });
 
