@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>App Launcher</title>
+<link rel="icon" type="image/x-icon" href="app.ico">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="bg-orb bg-orb-top"></div>
+<div class="bg-orb bg-orb-left"></div>
+
+<div class="app-shell">
+  <!-- HEADER -->
+  <div class="header glass-card">
+    <div class="header-left">
+      <img src="app.ico" class="app-logo" alt="logo">
+      <span class="header-title">AI86 Launcher</span>
+    </div>
+    <div class="header-right">
+      <button class="btn-guide" onclick="showGuide()">📖 Hướng dẫn</button>
+      <button class="btn-playlist" onclick="showPlaylist()">🎁 Trọn bộ Video hướng dẫn và quà tặng</button>
+      <div class="theme-switcher" id="themeSwitcher">
+        <label class="theme-label" for="themeSelect">Theme</label>
+        <select id="themeSelect" class="theme-select" aria-label="Chọn tông màu giao diện">
+          <option value="violet">Tím</option>
+          <option value="ocean">Biển</option>
+          <option value="sunset" selected>Hoàng hôn</option>
+        </select>
+      </div>
+    </div>
+  </div>
+
+  <section class="hero">
+    <h1 class="hero-title">Elevate Your <span>Channel</span></h1>
+    <p class="hero-subtitle">Đồng bộ hình tiếng chính xác từng giây. Bộ công cụ AI cho workflow tạo nội dung nhanh, ổn định và hiện đại.</p>
+
+  </section>
+
+  <!-- APP VISIBILITY SETTINGS (Expert Mode) -->
+  <div class="visibility-settings" id="visibilitySettings" style="display:none">
+    <div class="visibility-header">
+      <span>👁️ Hiển thị trên Mod thường</span>
+      <span class="visibility-hint">(Tick để hiển thị, bỏ tick để ẩn)</span>
+    </div>
+    <div class="visibility-grid" id="visibilityGrid"></div>
+  </div>
+
+<!-- GUIDE MODAL -->
+<div class="modal-overlay" id="guideOverlay" onclick="closeGuide()">
+  <div class="modal modal-wide" onclick="event.stopPropagation()">
+    <div class="modal-header">
+      <span>📖 Hướng dẫn sử dụng</span>
+      <button class="modal-close" onclick="closeGuide()">✕</button>
+    </div>
+
+    <!-- Tabs -->
+    <div class="guide-tabs">
+      <button class="guide-tab active" onclick="switchTab(0)">🎬 App Chính V4.4</button>
+      <button class="guide-tab" onclick="switchTab(1)">🔄 Autosync V3.3</button>
+      <button class="guide-tab" onclick="switchTab(2)">🖼️ Tạo Ảnh Whisk</button>
+      <button class="guide-tab" onclick="switchTab(3)">🎬 Tạo Ảnh Flow</button>
+      <button class="guide-tab" onclick="switchTab(4)">🎙️ Lồng Tiếng</button>
+    </div>
+
+    <div class="modal-body">
+
+      <!-- Tab 0: Auto Sync Pro V4.4 -->
+      <div class="guide-panel active" id="gtab-0">
+        <div class="guide-section" style="border-color:rgba(239,68,68,.45);background:rgba(239,68,68,.08)">
+          <div class="guide-title" style="color:#EF4444">⚠️ Lưu ý quan trọng — Đọc trước khi sử dụng</div>
+          <div class="guide-text" style="line-height:1.8">
+            <b style="color:#EF4444">1.</b> Đặt thư mục App ở ngoài ổ <b>D:</b> hoặc <b>E:</b>, <b style="color:#EF4444">không đặt trong các thư mục con</b> — sẽ gây lỗi đường dẫn.<br>
+            <b style="color:#EF4444">2.</b> Các nguyên liệu như Ảnh, Video, Kịch bản... cũng để ngay ở thư mục trực thuộc ổ D: hay E: <span style="color:var(--muted)">(Ví dụ: D:\KB1\)</span> — tránh lỗi tên đường dẫn quá dài gây lỗi đồng bộ và lỗi render.<br>
+            <b style="color:#EF4444">3.</b> Nếu lần đầu sử dụng gặp lỗi Render, hãy bấm ngay nút <b>Fix FFmpeg</b> trên màn hình App này.
+          </div>
+        </div>
+
+        <div class="guide-section">
+          <div class="guide-title">▶️ Quy trình làm việc</div>
+          <div class="guide-text">
+            <b>① Chọn File Audio</b><br>
+            — Upload file âm thanh lồng tiếng đã chuẩn bị (xuất từ Tab 11Labs hoặc tự thu âm).<br><br>
+            <b>② Chọn File Kịch bản (.txt)</b><br>
+            — Mỗi câu / cảnh nằm trên <b>1 dòng riêng</b>. Số dòng phải khớp chính xác số ảnh/clip.<br><br>
+            <b>③ Chọn Thư mục Ảnh/Video</b><br>
+            — Thư mục chứa các cảnh nền. Mỗi ảnh/clip tương ứng với 1 dòng kịch bản.<br><br>
+            <b>④ Bắt đầu Đồng bộ</b><br>
+            — Nhấn <b>BẮT ĐẦU ĐỒNG BỘ</b>. App phân tích và căn thời lượng từng cảnh theo audio.<br><br>
+            <b>⑤ Xét duyệt Phân cảnh</b><br>
+            — Màn hình phân cảnh hiện ra — chọn ảnh/video nào sẽ hiển thị ở cảnh nào.<br><br>
+            <b>⑥ Chọn Thư mục Đầu ra</b><br>
+            — Nơi lưu video thành phẩm sau khi app xử lý xong.<br><br>
+            <b>⑦ Xuất Video</b><br>
+            — App tính toán tốc độ (Speed/Trim/Loop) và xuất video khớp âm thanh chính xác từng ms.
+          </div>
+        </div>
+
+        <div class="guide-section guide-tip">
+          <div class="guide-title">💡 Tip Import Nhanh</div>
+          <div class="guide-text">Đặt tất cả nguyên liệu vào cùng 1 thư mục → nhấn <b>"Thư mục tất cả nguyên liệu"</b> ở góc phải trên — app tự động điền đầy đủ.</div>
+        </div>
+        <img src="app_screenshot.png" class="guide-img" alt="Auto Sync Pro V4.4">
+      </div>
+
+      <!-- Tab 1: Autosync V3.3 -->
+      <div class="guide-panel" id="gtab-1">
+        <div class="guide-section" style="border-color:rgba(239,68,68,.45);background:rgba(239,68,68,.08)">
+          <div class="guide-title" style="color:#EF4444">⚠️ Lưu ý quan trọng — Đọc trước khi sử dụng</div>
+          <div class="guide-text" style="line-height:1.8">
+            <b style="color:#EF4444">1.</b> Đặt thư mục App ở ngoài ổ <b>D:</b> hoặc <b>E:</b>, <b style="color:#EF4444">không đặt trong các thư mục con</b> — sẽ gây lỗi đường dẫn.<br>
+            <b style="color:#EF4444">2.</b> Các nguyên liệu như Ảnh, Video, Kịch bản... cũng để ngay ở thư mục trực thuộc ổ D: hay E: <span style="color:var(--muted)">(Ví dụ: D:\KB1\)</span> — tránh lỗi tên đường dẫn quá dài gây lỗi đồng bộ và lỗi render.<br>
+            <b style="color:#EF4444">3.</b> Nếu lần đầu sử dụng gặp lỗi Render, hãy bấm ngay nút <b>Fix FFmpeg</b> trên màn hình App này.
+          </div>
+        </div>
+        <div class="guide-section">
+          <div class="guide-title">▶️ Quy trình làm việc chuẩn</div>
+          <div class="guide-text">
+            <b>① Chuẩn bị file đầu vào</b><br>
+            — <b>Audio:</b> File lồng tiếng (.mp3, .wav, .m4a...)<br>
+            — <b>Kịch bản:</b> File .txt, mỗi câu/cảnh trên 1 dòng, đúng thứ tự<br>
+            — <b>Thư mục media:</b> Ảnh/clip đặt tên theo số thứ tự (001.jpg, 002.mp4...) tương ứng từng dòng kịch bản<br>
+            — <b>Thư mục Output:</b> Nơi lưu kết quả — nên để trống<br><br>
+            <b>② Chia Audio theo Kịch bản</b><br>
+            — App tự nhận diện điểm ngắt tự nhiên tại chỗ im lặng, không cắt giữa chừng câu nói<br>
+            — Kết quả: danh sách đoạn với timestamp chính xác từng ms<br><br>
+            <b>③ Ghép Video + Audio</b><br>
+            — Mỗi ảnh/clip được kéo giãn hoặc cắt để khớp thời lượng đoạn audio tương ứng<br>
+            — Kết quả: file <b>final_synced_video.mp4</b> trong thư mục Output
+          </div>
+        </div>
+        <div class="guide-section">
+          <div class="guide-title">🎵 Cấu hình Chia Audio</div>
+          <div class="guide-text">
+            — <b>Nhận diện im lặng:</b> Nên bật — chỉ tắt nếu audio không có điểm ngắt rõ ràng<br>
+            — <b>Độ nhạy im lặng:</b> Kéo trái nếu app cắt vào giữa câu; kéo phải nếu bỏ sót điểm cắt<br>
+            — <b>Khoảng lặng tối thiểu:</b> Tăng nếu cắt quá vụn; giảm nếu bỏ sót khoảng ngắt ngắn<br>
+            — <b>Ngôn ngữ Audio:</b> Chọn đúng ngôn ngữ — đây là nguyên nhân sai lệch phổ biến nhất<br>
+            — <b>Tiếng Nhật/Trung/Hàn:</b> App tự chuyển sang chế độ xử lý đặc biệt
+          </div>
+        </div>
+        <div class="guide-section">
+          <div class="guide-title">🎬 Cấu hình Đồng Bộ Video</div>
+          <div class="guide-text">
+            — <b>Speed Change:</b> Kéo giãn/nén tốc độ clip cho khớp audio<br>
+            — <b>Trim / Loop:</b> Cắt bớt hoặc lặp lại clip thay vì đổi tốc độ<br>
+            — <b>Âm lượng video nền:</b> Đặt 0% nếu chỉ muốn giữ giọng lồng tiếng<br>
+            — <b>Hiệu ứng chuyển cảnh:</b> None (cắt cứng) hoặc Fade In/Out
+          </div>
+        </div>
+        <div class="guide-section guide-tip">
+          <div class="guide-title">💡 Mẹo Import nhanh</div>
+          <div class="guide-text">Đặt <b>tất cả nguyên liệu</b> vào cùng 1 thư mục → nhấn <b>Browse → "Thư mục tất cả nguyên liệu"</b> góc phải trên — app tự điền đầy đủ và tự chọn Output!</div>
+        </div>
+        <img src="images/6.png" class="guide-img" alt="Autosync V3.3">
+      </div>
+
+      <!-- Tab 2: Tạo Ảnh Whisk -->
+      <div class="guide-panel" id="gtab-2">
+        <div class="guide-section" style="border-color:rgba(6,182,212,.35);background:rgba(6,182,212,.07)">
+          <div class="guide-title" style="color:#06B6D4">🔧 Cài đặt ban đầu</div>
+          <div class="guide-text">
+            <b>Bước 1</b> — Cài EXT Chrome: <a href="#" class="notice-link" onclick="openUrl('https://chromewebstore.google.com/detail/auto-whisk-nano-banana-im/gedfnhdibkfgacmkbjgpfjihacalnlpn?pli=1');return false;">Auto Whisk — Chrome Web Store</a><br>
+            <b>Bước 2</b> — Truy cập Whisk: <a href="#" class="notice-link" onclick="openUrl('https://labs.google/fx/tools/whisk/project');return false;">labs.google/fx/tools/whisk/project</a><br>
+            <b>Bước 3</b> — Mở Ext Auto Whisk và tạo ảnh.
+          </div>
+        </div>
+        <div class="guide-video-wrap">
+          <iframe src="https://drive.google.com/file/d/1bdbLDcbL7ao9VGxL1cxmy11SBCOaCynU/preview" class="guide-video" allow="autoplay" allowfullscreen></iframe>
+        </div>
+        <div class="guide-section" style="border-color:rgba(245,158,11,.4);background:rgba(245,158,11,.07)">
+          <div class="guide-text" style="color:#F59E0B;font-weight:600">⚠️ Chúng tôi có tặng các bạn App Whisk Free, nhưng các bạn chỉ nên sử dụng khi thực sự hiểu về Cookies, cách lấy và cách sử dụng cookies của Whisk. Đọc kỹ hướng dẫn bên dưới.</div>
+        </div>
+        <div class="guide-section">
+          <div class="guide-title">🖼️ Tab Whisk — Tạo Ảnh & Video AI Hàng Loạt</div>
+          <div class="guide-text">Tự động gửi từng Prompt sang Whisk (Google), sinh ảnh/video <b>đa luồng</b> và tải về máy hoàn toàn tự động.</div>
+        </div>
+        <div class="guide-section">
+          <div class="guide-title">🔑 Chuẩn bị — Lấy Cookie Whisk <span style="font-weight:400;color:var(--muted)">(xong 1 lần dùng mãi)</span></div>
+          <div class="guide-text">
+            <b>Bước 1</b> — Cài tiện ích <b>Cookie Exporter</b> trên Chrome Web Store: <a href="#" class="notice-link" onclick="openUrl('https://chromewebstore.google.com/detail/cookie-exporter/fhnmmidekmgocpjdceeffppcodigillk?pli=1');return false;">Tải về</a><br>
+            <b>Bước 2</b> — Truy cập <a href="#" class="notice-link" onclick="openUrl('https://labs.google/fx/tools/whisk/project');return false;">labs.google/fx/tools/whisk/project</a> → đăng nhập Gmail.<br>
+            <b>Bước 3</b> — Mở Cookie Exporter → nhấn <b>"Copy as JSON"</b>.<br>
+            <b>Bước 4</b> — Dán vào ô <b>"Cookie (JSON)"</b> Tab Whisk → nhấn <b>"Kiểm tra & Lưu"</b>.
+          </div>
+        </div>
+        <div class="guide-section">
+          <div class="guide-title">📋 Các bước sinh ảnh</div>
+          <div class="guide-text">
+            <b>Bước 1</b> — Danh sách prompt từ Tab Storyboard tự động chuyển sang (mỗi dòng = 1 prompt). Hoặc copy-paste thủ công.<br>
+            <b>Bước 2</b> — Chọn <b>Model</b>, tỷ lệ khung hình và thư mục lưu kết quả.<br>
+            <b>Bước 3</b> — Chọn số ảnh muốn tạo cho mỗi prompt → nhấn <b>"CHẠY NGAY"</b>. Sinh ảnh + tải về tự động, đa luồng. ☕ Pha cafe và chờ!
+          </div>
+        </div>
+        <img src="images/2.png" class="guide-img" alt="Tạo Ảnh Whisk">
+      </div>
+
+      <!-- Tab 3: Tạo Video Flow -->
+      <div class="guide-panel" id="gtab-3">
+        <div class="guide-section" style="border-color:rgba(6,182,212,.35);background:rgba(6,182,212,.07)">
+          <div class="guide-title" style="color:#06B6D4">🎬 Cài đặt Flow</div>
+          <div class="guide-text">
+            <b>Bước 1</b> — Cài EXT Chrome: <a href="#" class="notice-link" onclick="openUrl('https://drive.google.com/file/d/1BpIFga3NQrjcmloe-d80J1Ri1gmWJFPT/view?usp=sharing');return false;">Auto Flow — Tải về và giải nén sau đó làm theo hướng dẫn</a><br>
+            <b>Bước 2</b> — Truy cập Flow: <a href="#" class="notice-link" onclick="openUrl('https://labs.google/fx/vi/tools/flow');return false;">labs.google/fx/vi/tools/flow</a><br>
+            <b>Bước 3</b> — Mở Ext Autowhisk và tạo ảnh.
+          </div>
+        </div>
+        <div class="guide-video-wrap">
+          <iframe src="https://www.youtube-nocookie.com/embed/O5WF_tLKtyg?rel=0&modestbranding=1&playsinline=1" class="guide-video" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        </div>
+        <div class="guide-section guide-tip">
+          <div class="guide-text">Nếu mạng hoặc chính sách video vẫn chặn nhúng, bấm <a href="#" class="notice-link" onclick="openUrl('https://youtu.be/O5WF_tLKtyg');return false;">mở trực tiếp YouTube</a>.</div>
+        </div>
+      </div>
+
+      <!-- Tab 4: Lồng Tiếng 11Labs -->
+      <div class="guide-panel" id="gtab-4">
+        <div class="guide-section" style="border-color:rgba(245,158,11,.4);background:rgba(245,158,11,.07)">
+          <div class="guide-title" style="color:#F59E0B">📢 Đọc trước — Ưu tiên phương pháp nào?</div>
+          <div class="guide-text">
+            Các bạn <b>ưu tiên tạo voice theo phương pháp cũ</b> trước khi sử dụng phần mềm này. Ngoài ra có thể tham khảo thêm cách tạo voice tại đây:<br><br>
+            <b>1.</b> <a href="#" class="notice-link" onclick="openUrl('https://aistudio.google.com/generate-speech?model=gemini-2.5-flash-preview-tts');return false;">aistudio.google.com/generate-speech</a> — Google AI Studio TTS (Gemini 2.5 Flash)<br>
+            <b>2.</b> <a href="#" class="notice-link" onclick="openUrl('https://tts.studyai.click/');return false;">tts.studyai.click</a> — StudyAI TTS<br><br>
+            ⚠️ Đây là các trang tạo <b>miễn phí</b> và sẽ <b>không có chất lượng/độ dài tương đương</b> với các trang trả phí.<br><br>
+            Chúng tôi cũng cung cấp 1 <b>App tạo audio</b> tích hợp, nhưng bạn chỉ nên sử dụng khi đã hiểu rõ về <b>API 11Labs</b>, <b>Proxy/VPN</b>.
+          </div>
+        </div>
+        <div class="guide-section">
+          <div class="guide-title">🎙️ Tab 11Labs — Lồng Tiếng Tự Động</div>
+          <div class="guide-text">TTS tiếng Việt tự nhiên với ElevenLabs, xuất file MP3 tự động. <b>Bắt buộc dùng VPN</b>.</div>
+        </div>
+        <div class="guide-section">
+          <div class="guide-title">📋 Các bước thực hiện</div>
+          <div class="guide-text">
+            
+            <b>Bước 0</b> — Chuẩn bị: hãy đọc hướng dẫn ở đây: <a href="#" class="notice-link" onclick="openUrl('https://www.ai86.pro/guide.html#elevenlabs');return false;">AI86.Pro</a> — Hướng dẫn 11Labs<br>
+            <b>Bước 1</b> — Kịch bản từ Tab Storyboard tự động chuyển sang, hoặc paste thủ công vào ô "Kịch bản cần đọc".<br>
+            <b>Bước 2</b> — <b>Khuyến nghị dùng Model v3</b> — thế hệ mới nhất ElevenLabs, ngữ điệu tự nhiên, đọc tiếng Việt mượt mà.<br>
+            <b>Bước 3</b> — Tuỳ chỉnh thời gian nghỉ giữa câu/đoạn. Chọn <b>Auto Silence</b> để AI tự ngắt nghỉ.<br>
+            <b>Bước 4</b> — App tích hợp sẵn Pool 55 Key. Có thể nhấn <b>"Quản lý API Keys"</b> để dùng key cá nhân.<br>
+            <b>Bước 5</b> — Nhấn <b>"BẮT ĐẦU TẠO AUDIO"</b> — kết quả tự lưu file MP3. Nghe thử ngay bằng Audio Player tích hợp.
+          </div>
+        </div>
+        <img src="images/3.png" class="guide-img" alt="Lồng Tiếng 11Labs">
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- PLAYLIST POPUP -->
+<div class="modal-overlay" id="playlistOverlay" onclick="closePlaylist()">
+  <div class="modal modal-wide" onclick="event.stopPropagation()">
+    <div class="modal-header">
+      <span>🎁 Trọn bộ Video hướng dẫn và quà tặng</span>
+      <button class="modal-close" onclick="closePlaylist()">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="guide-video-wrap">
+        <iframe src="https://www.youtube-nocookie.com/embed/videoseries?list=PLg4WykTKAcjtE3KELuw81TzMyiQwkwauv" class="guide-video" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      </div>
+      <div class="guide-section guide-tip">
+        <div class="guide-text">Nếu bị chặn nhúng, bấm <a href="#" class="notice-link" onclick="openUrl('https://youtube.com/playlist?list=PLg4WykTKAcjtE3KELuw81TzMyiQwkwauv&si=RWozuQG46klPKm6v');return false;">mở playlist trên YouTube</a>.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CARDS GRID -->
+<div class="tools-head" id="toolsSection">
+
+</div>
+<div class="scroll-body glass-card">
+  <div class="grid" id="cardsGrid"></div>
+</div>
+</div>
+
+<!-- DOWNLOAD PROGRESS OVERLAY (per card, injected dynamically) -->
+
+<!-- NOTICE POPUP -->
+<div class="notice-overlay" id="noticeOverlay">
+  <div class="notice-modal">
+    <div class="notice-glow"></div>
+    <div class="notice-header">
+      <span class="notice-icon">📢</span>
+      <span class="notice-title">Thông Báo</span>
+      <span class="notice-badge">Mới</span>
+    </div>
+    <div class="notice-body" id="noticeBody">
+      <div class="notice-loading">⏳ Đang tải thông báo...</div>
+    </div>
+    <div class="notice-footer">
+      <button class="btn-notice-skip" onclick="dismissNotice(true)">🔕 Không hiện lại trong 48h</button>
+      <button class="btn-notice-close" onclick="dismissNotice(false)">Đóng</button>
+    </div>
+  </div>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>

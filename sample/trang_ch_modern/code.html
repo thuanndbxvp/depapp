@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="vi"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "error": "#ffb4ab",
+              "surface-container-highest": "#333348",
+              "surface": "#111124",
+              "on-secondary-fixed-variant": "#45455c",
+              "outline-variant": "#494455",
+              "primary-fixed": "#e8ddff",
+              "surface-container-lowest": "#0c0c1f",
+              "secondary-container": "#45455c",
+              "on-surface": "#e2e0fb",
+              "inverse-on-surface": "#2f2e43",
+              "on-secondary-fixed": "#19192e",
+              "surface-container-high": "#28283c",
+              "background": "#111124",
+              "primary": "#cfbdff",
+              "inverse-primary": "#6b38df",
+              "on-tertiary-fixed": "#341100",
+              "error-container": "#93000a",
+              "on-primary-fixed-variant": "#520ec7",
+              "surface-container-low": "#1a1a2d",
+              "on-secondary-container": "#b4b2ce",
+              "on-primary-container": "#faf3ff",
+              "primary-container": "#7d4ef2",
+              "surface-container": "#1e1e31",
+              "on-background": "#e2e0fb",
+              "surface-dim": "#111124",
+              "tertiary-fixed": "#ffdbca",
+              "inverse-surface": "#e2e0fb",
+              "tertiary-container": "#ba5100",
+              "surface-bright": "#37374c",
+              "on-error-container": "#ffdad6",
+              "surface-tint": "#cfbdff",
+              "on-tertiary-container": "#fff4ef",
+              "surface-variant": "#333348",
+              "on-surface-variant": "#cbc3d7",
+              "outline": "#948ea1",
+              "tertiary": "#ffb690",
+              "secondary-fixed": "#e2e0fc",
+              "primary-fixed-dim": "#cfbdff",
+              "on-secondary": "#2e2e44",
+              "on-primary-fixed": "#21005d",
+              "secondary-fixed-dim": "#c6c4e0",
+              "on-tertiary-fixed-variant": "#783200",
+              "on-primary": "#390093",
+              "on-error": "#690005",
+              "secondary": "#c6c4e0",
+              "tertiary-fixed-dim": "#ffb690",
+              "on-tertiary": "#552100"
+            },
+            fontFamily: {
+              "headline": ["Inter"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+      body {
+        background-color: #111124;
+        font-family: 'Inter', sans-serif;
+        color: #e2e0fb;
+      }
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      }
+      .signature-gradient {
+        background: linear-gradient(135deg, #7D4EF2 0%, #cfbdff 100%);
+      }
+      .glass-card {
+        background: rgba(30, 30, 49, 0.6);
+        backdrop-filter: blur(20px);
+      }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="overflow-x-hidden">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-slate-950/60 backdrop-blur-xl shadow-[0_20px_40px_rgba(125,78,242,0.06)]">
+<div class="flex justify-between items-center w-full px-6 py-4 max-w-7xl mx-auto">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-violet-500 dark:text-violet-400">speed</span>
+<span class="text-2xl font-black italic tracking-tighter text-violet-500 dark:text-violet-400 font-['Inter']">KINETIC</span>
+</div>
+<div class="flex items-center">
+<span class="material-symbols-outlined text-slate-300 hover:text-violet-300 transition-colors duration-300 cursor-pointer">menu</span>
+</div>
+</div>
+</header>
+<main class="pt-24 pb-32">
+<!-- Hero Section -->
+<section class="px-6 py-12 text-center relative overflow-hidden">
+<!-- Decorative Background Element -->
+<div class="absolute -top-24 -right-24 w-64 h-64 signature-gradient blur-[100px] opacity-20 rounded-full"></div>
+<div class="absolute -bottom-24 -left-24 w-64 h-64 bg-violet-600 blur-[100px] opacity-10 rounded-full"></div>
+<div class="relative z-10 max-w-2xl mx-auto">
+<span class="text-violet-400 text-sm font-bold tracking-[0.2em] uppercase mb-4 block">Performance Driven</span>
+<h1 class="text-5xl md:text-7xl font-black tracking-tighter text-on-surface mb-6 leading-[1.1]">
+                    Elevate Your <span class="text-transparent bg-clip-text signature-gradient">Channel</span>
+</h1>
+<p class="text-lg md:text-xl text-on-surface-variant font-medium leading-relaxed mb-10 max-w-md mx-auto">
+                    Đồng Bộ Hình Tiếng Chính Xác Từng giây. Công nghệ xử lý Kinetic cho tốc độ vượt trội.
+                </p>
+<div class="flex flex-col sm:flex-row gap-4 justify-center">
+<button class="signature-gradient text-on-primary px-8 py-4 rounded-xl font-bold text-lg shadow-[0_10px_25px_rgba(125,78,242,0.3)] hover:scale-105 active:scale-95 transition-all">
+                        Tải về
+                    </button>
+<button class="bg-surface-container-high text-on-surface px-8 py-4 rounded-xl font-bold text-lg hover:bg-surface-container-highest transition-all">
+                        Khám phá
+                    </button>
+</div>
+</div>
+</section>
+<!-- Product Highlight: Auto Sync Pro -->
+<section class="px-6 py-12">
+<div class="bg-surface-container-low rounded-[2.5rem] p-8 md:p-12 relative overflow-hidden">
+<div class="grid md:grid-cols-2 gap-12 items-center">
+<div class="order-2 md:order-1">
+<div class="inline-flex items-center gap-2 px-4 py-2 bg-primary-container/20 rounded-full mb-6">
+<span class="material-symbols-outlined text-primary text-sm" style="font-variation-settings: 'FILL' 1;">stars</span>
+<span class="text-primary text-xs font-bold uppercase tracking-widest">Featured App</span>
+</div>
+<h2 class="text-3xl md:text-4xl font-extrabold text-on-surface mb-4 tracking-tight">Auto Sync Pro</h2>
+<p class="text-on-surface-variant text-lg leading-relaxed mb-8">
+                            Giải pháp tối ưu cho việc đồng bộ hóa nội dung đa nền tảng. Tự động hóa quy trình làm việc của bạn với độ trễ gần như bằng không.
+                        </p>
+<div class="space-y-4 mb-10">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-violet-500/10 flex items-center justify-center text-violet-400">
+<span class="material-symbols-outlined">sync</span>
+</div>
+<span class="font-medium text-on-surface">Đồng bộ hóa thời gian thực</span>
+</div>
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-violet-500/10 flex items-center justify-center text-violet-400">
+<span class="material-symbols-outlined">bolt</span>
+</div>
+<span class="font-medium text-on-surface">Tốc độ xử lý cực nhanh</span>
+</div>
+</div>
+<button class="text-primary font-bold flex items-center gap-2 hover:translate-x-2 transition-transform">
+                            Tìm hiểu thêm <span class="material-symbols-outlined">arrow_forward</span>
+</button>
+</div>
+<div class="order-1 md:order-2 flex justify-center">
+<div class="relative w-64 h-64 md:w-80 md:h-80">
+<div class="absolute inset-0 signature-gradient rounded-[3rem] rotate-6 opacity-20"></div>
+<div class="absolute inset-0 bg-surface-container rounded-[3rem] -rotate-3 border border-outline-variant/10 shadow-2xl flex items-center justify-center">
+<div class="text-center">
+<span class="material-symbols-outlined text-8xl text-primary" style="font-variation-settings: 'FILL' 1;">unfold_more</span>
+<div class="mt-4 signature-gradient w-16 h-1.5 rounded-full mx-auto"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Bento Grid Features -->
+<section class="px-6 py-12 max-w-7xl mx-auto">
+<h3 class="text-2xl font-bold text-on-surface mb-10 px-2">Tại sao chọn Kinetic?</h3>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<!-- Bento Item 1 -->
+<div class="bg-surface-container-low p-8 rounded-[2rem] md:col-span-2 flex flex-col justify-between hover:bg-surface-container transition-all">
+<div>
+<span class="material-symbols-outlined text-tertiary text-4xl mb-6">rocket_launch</span>
+<h4 class="text-2xl font-bold mb-4">App Launcher Siêu Tốc</h4>
+<p class="text-on-surface-variant leading-relaxed">Khởi động ứng dụng yêu thích của bạn ngay lập tức với công nghệ nén dữ liệu mới nhất, giảm thiểu thời gian chờ đợi tối đa.</p>
+</div>
+<div class="mt-8 flex -space-x-3">
+<div class="w-12 h-12 rounded-full border-4 border-surface-container-low overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="User profile avatar 1" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDTB0NZUbGt7LYqGIJW7E85Ond5PnE2pPk3oRTakyURFu4ArodRV6Iag9GM8HVMdRanAj_Hcl1N9O0_4rSVQkowaaj2DHO6yfVUy2GgB8du5H03GZvAZGYIbaNPLc3SwMPvU_-jD-zBNoGHE7n9yZaJQdS87GLMvs74TVKTBcix9opO6elq0jMX2xNmJG3kqXxzkqnYfAnpI4XD0NJmTGW-mrmRIegqZdA-OfztEK_6CvypSVwqieDYynQJVE-wX8H4wvw45vkJjTo"/>
+</div>
+<div class="w-12 h-12 rounded-full border-4 border-surface-container-low overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="User profile avatar 2" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDH3O58KVtpmJUNJDf7fZxrYEZspOTM6_kzEsBxyY4x-weX29HbRblRawaM7RU2S67YMGVN6MM07LVySjNdvqNldjilbfBWnCux_1gbuYAxQDnwisy02B1DC5VQDtzTGDo084-NiwgSfAW2MYyjnWu9fmK7GvQC_vqINSqnh8CeWtKGsAq6M8gl4A4HuPkozhvNyIpSvFakPR3tHBN_jm-KVZ9q7SWkG9bapgbSj_I5hfII2HwNrEcPeVKEDjpd_uNwurC8rW_5GQw"/>
+</div>
+<div class="w-12 h-12 rounded-full bg-primary-container flex items-center justify-center text-xs font-bold border-4 border-surface-container-low">
+                            +2k
+                        </div>
+</div>
+</div>
+<!-- Bento Item 2 -->
+<div class="bg-surface-container-low p-8 rounded-[2rem] hover:bg-surface-container transition-all">
+<span class="material-symbols-outlined text-primary text-4xl mb-6">security</span>
+<h4 class="text-xl font-bold mb-4">Bảo mật Tuyệt đối</h4>
+<p class="text-on-surface-variant text-sm">Dữ liệu của bạn được mã hóa đầu cuối, đảm bảo không ai có thể can thiệp vào quy trình sync.</p>
+</div>
+<!-- Bento Item 3 -->
+<div class="bg-surface-container-low p-8 rounded-[2rem] hover:bg-surface-container transition-all">
+<span class="material-symbols-outlined text-violet-400 text-4xl mb-6">auto_awesome</span>
+<h4 class="text-xl font-bold mb-4">Giao diện Hiện đại</h4>
+<p class="text-on-surface-variant text-sm">Thiết kế tối giản, tập trung vào trải nghiệm người dùng với các hiệu ứng mượt mà.</p>
+</div>
+<!-- Bento Item 4 -->
+<div class="bg-surface-container-low p-8 rounded-[2rem] md:col-span-2 flex items-center gap-8 hover:bg-surface-container transition-all">
+<div class="flex-1">
+<h4 class="text-xl font-bold mb-2">Tương thích Đa nền tảng</h4>
+<p class="text-on-surface-variant text-sm">Dễ dàng hoạt động trên iOS, Android và các nền tảng web phổ biến nhất hiện nay.</p>
+</div>
+<div class="flex gap-4">
+<span class="material-symbols-outlined text-4xl opacity-40">phone_iphone</span>
+<span class="material-symbols-outlined text-4xl opacity-40">laptop_mac</span>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="w-full py-12 bg-slate-950 border-t border-slate-800/30">
+<div class="max-w-7xl mx-auto px-8 flex flex-col md:flex-row justify-between items-center gap-8">
+<div class="flex flex-col items-center md:items-start">
+<span class="text-lg font-bold text-slate-100 mb-2">KINETIC SCHOLAR</span>
+<p class="text-sm font-['Inter'] leading-relaxed text-slate-500 text-center md:text-left">© 2024 KINETIC SCHOLAR. ALL RIGHTS RESERVED.</p>
+</div>
+<div class="flex gap-6">
+<a class="text-sm font-['Inter'] leading-relaxed text-slate-500 hover:text-white transition-colors" href="#">Privacy</a>
+<a class="text-sm font-['Inter'] leading-relaxed text-slate-500 hover:text-white transition-colors" href="#">Terms</a>
+<a class="text-sm font-['Inter'] leading-relaxed text-slate-500 hover:text-white transition-colors" href="#">Support</a>
+<a class="text-sm font-['Inter'] leading-relaxed text-slate-500 hover:text-white transition-colors" href="#">Community</a>
+</div>
+</div>
+</footer>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full flex justify-around items-end pb-6 px-4 bg-slate-900/80 backdrop-blur-2xl rounded-t-[2rem] z-50 bg-slate-800/50 shadow-[0_-10px_40px_rgba(0,0,0,0.4)]">
+<a class="flex flex-col items-center justify-center bg-violet-600 text-white rounded-full p-3 mb-2 shadow-[0_0_15px_rgba(125,78,242,0.5)] active:scale-95 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined">home_app_logo</span>
+<span class="text-[10px] font-medium uppercase tracking-widest font-['Inter'] mt-1">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-slate-400 p-2 hover:text-violet-400 transition-all active:scale-95 duration-200" href="#">
+<span class="material-symbols-outlined">build</span>
+<span class="text-[10px] font-medium uppercase tracking-widest font-['Inter'] mt-1">Tools</span>
+</a>
+<a class="flex flex-col items-center justify-center text-slate-400 p-2 hover:text-violet-400 transition-all active:scale-95 duration-200" href="#">
+<span class="material-symbols-outlined">school</span>
+<span class="text-[10px] font-medium uppercase tracking-widest font-['Inter'] mt-1">Tutorials</span>
+</a>
+<a class="flex flex-col items-center justify-center text-slate-400 p-2 hover:text-violet-400 transition-all active:scale-95 duration-200" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="text-[10px] font-medium uppercase tracking-widest font-['Inter'] mt-1">Profile</span>
+</a>
+</nav>
+</body></html>
