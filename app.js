@@ -23,7 +23,7 @@ const STATIC_ENTRIES = [
     step: 'main',
     main_row: 1,
     main_full: true,
-    download_url: 'https://drive.google.com/file/d/1-3f3Y5hG-K6HqO-h4hNIatRfSKS7xzv_/view?usp=sharing',
+    download_url: 'https://drive.google.com/file/d/1nx_PRcJRbuRHCz968DMvTXHCBvhP2VP6/view?usp=sharing',
   },
 
   {
@@ -54,7 +54,7 @@ const STATIC_ENTRIES = [
     step: 'main',
     main_row: 2,
     main_full: false,
-    download_url: 'https://drive.google.com/file/d/1HOm-coqcztfMxYXlcGehw5aVqrXBKXMX/view?usp=sharing',
+    download_url: 'https://drive.google.com/file/d/1CHrm4dnll1CAYa-mfyzLh8KgBI5XheM8/view?usp=sharing',
   },
   {
     name: 'Phân Cảnh AI',
@@ -67,6 +67,7 @@ const STATIC_ENTRIES = [
     info: 'phancanh.studyai86.online',
     needs_license: false,
     step: 1,
+    guide_video_url: 'https://www.youtube.com/watch?v=hjvAQTXi2sM&list=PLg4WykTKAcjtE3KELuw81TzMyiQwkwauv&index=2',
   },
   {
     name: 'Phân Cảnh · Đồng nhất nhân vật',
@@ -79,6 +80,7 @@ const STATIC_ENTRIES = [
     info: 'vip.studyai.click · Dự phòng',
     needs_license: false,
     step: 1,
+    guide_video_url: 'https://www.youtube.com/watch?v=hjvAQTXi2sM&list=PLg4WykTKAcjtE3KELuw81TzMyiQwkwauv&index=2',
   },
   {
     name: 'TTS · AI Studio',
@@ -90,6 +92,7 @@ const STATIC_ENTRIES = [
     info: 'aistudio.google.com · Thay thế',
     needs_license: false,
     step: 2,
+    guide_video_url: 'https://youtu.be/hjvAQTXi2sM?list=PLg4WykTKAcjtE3KELuw81TzMyiQwkwauv&t=347',
   },
   {
     name: 'TTS · StudyAI',
@@ -330,7 +333,7 @@ function makeCard(e, idx) {
       ${e.extra_guide_tab !== undefined ? `<button class="btn-flat" onclick="switchTab(${e.extra_guide_tab});showGuide()">ⓘ HD Flow</button>` : ''}
       <button class="btn-action ${actionClass}" id="btn-action-${idx}" onclick="onAction(${idx})">${actionText}</button>
     </div>
-    ${e.gift_note ? `<div class="card-notice" style="text-align:center">${e.gift_note} <a href="#" class="notice-link" onclick="openUrl('${e.gift_url}');return false;">Tải về</a></div>` : ''}
+    ${e.gift_note ? `<div class="card-notice" style="text-align:center">${e.gift_note} <a href="#" class="notice-link" onclick="openUrl('${e.gift_url}');return false;">Tải về</a> và đọc hướng dẫn tại <a href="#" class="notice-link" onclick="openUrl('https://www.ai86.pro/guide.html#elevenlabs');return false;">đây</a>, chúng tôi không giải thích gì thêm.</div>` : ''}
     <div class="card-status" id="status-${idx}"></div>
   `;
   return card;
@@ -420,7 +423,9 @@ let entries_cache = [];
 async function onInfo(idx) {
   const e = entries_cache[idx];
   if (!e) return;
-  if (e.guide_tab !== undefined && e.guide_tab !== null) {
+  if (e.guide_video_url) {
+    openUrl(e.guide_video_url);
+  } else if (e.guide_tab !== undefined && e.guide_tab !== null) {
     switchTab(e.guide_tab);
     showGuide();
   } else {
@@ -512,7 +517,7 @@ async function fixFfmpeg() {
   }, 3000);
 }
 
-// ── Guide & Playlist Modals ───────────────────────────────────────────────
+// ── Guide Modal ───────────────────────────────────────────────────────────
 function showGuide() {
   document.getElementById('guideOverlay').classList.add('open');
 }
